@@ -1,5 +1,10 @@
 from flask import Flask
+from skyvault_core.engine import roi_engine  # Import the ROI engine blueprint
+
 app = Flask(__name__)
+
+# Register the ROI engine routes (including /vault-status)
+app.register_blueprint(roi_engine)
 
 @app.route('/')
 def home():
@@ -8,4 +13,4 @@ def home():
 @app.route('/test')
 def test():
     return "Test route active"
-    
+
