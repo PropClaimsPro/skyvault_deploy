@@ -1,2 +1,16 @@
-build_command: pip install -r requirements.txt
-run_command: gunicorn app:app
+name: skyvault
+region: nyc
+services:
+  - name: skyvault-flask
+    github:
+      repo: PropClaimsPro/skyvault_deploy
+      branch: main
+      deploy_on_push: true
+    run_command: gunicorn app:app
+    build_command: pip install -r requirements.txt
+    envs:
+      - key: FLASK_ENV
+        value: production
+    instance_size_slug: professional-xs
+    instance_count: 1
+    http_port: 8080
