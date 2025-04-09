@@ -8,3 +8,4 @@ def home():
 @app.route('/test')
 def test():
     return "Test route active"
+    
